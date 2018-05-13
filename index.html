@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head><title>QR Code Maker</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="fast and lightweight open source QR scanner application for Android"><link href="styles.css" rel="stylesheet" type="text/css"></head><body><div class="ribbon right"><a href="https://www.pakteguh.com">Pak Teguh</a></div><div class="container"><div class="row middle-xs center-xs"><div class="col-xs-12 col-sm-6"><div class="box"><div id="qr"></div><div><textarea id="text">Try scanning the above QR.
 Or edit this text to
-generate another QR code.</textarea></div></div></div></div></div><script src="qrcode.min.js"></script><script>window.onload = function() {
+generate another QR code.</textarea></div></div></div></div></div><script src="http://trikita.co/obsqr/qrcode.min.js"></script><script>window.onload = function() {
 	var qr = new QRCode(document.getElementById('qr'), {
 		colorDark : "#34495e",
 		colorLight : "#ffffff",
