@@ -1,15 +1,44 @@
-<!DOCTYPE html><html lang="en"><head><title>QR Code Maker</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="fast and lightweight open source QR scanner application for Android"><link href="styles.css" rel="stylesheet" type="text/css"></head><body><div class="ribbon right"><a href="https://www.pakteguh.com">Pak Teguh</a></div><div class="container"><div class="row middle-xs center-xs"><div class="col-xs-12 col-sm-6"><div class="box"><div id="qr"></div><div><textarea id="text">Try scanning the above QR.
-Or edit this text to
-generate another QR code.</textarea></div></div></div></div></div><script src="qrcode.min.js"></script><script>window.onload = function() {
-	var qr = new QRCode(document.getElementById('qr'), {
-		colorDark : "#34495e",
-		colorLight : "#ffffff",
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+<title>Cross-Browser QRCode generator for Javascript</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript" src="qrcode.js"></script>
+</head>
+<body>
+<input id="text" type="text" value="http://jindo.dev.naver.com/collie" style="width:80%" /><br />
+<div id="qrcode" style="width:100px; height:100px; margin-top:15px;"></div>
+
+<script type="text/javascript">
+var qrcode = new QRCode(document.getElementById("qrcode"), {
+	width : 100,
+	height : 100
+});
+
+function makeCode () {		
+	var elText = document.getElementById("text");
+	
+	if (!elText.value) {
+		alert("Input a text");
+		elText.focus();
+		return;
+	}
+	
+	qrcode.makeCode(elText.value);
+}
+
+makeCode();
+
+$("#text").
+	on("blur", function () {
+		makeCode();
+	}).
+	on("keydown", function (e) {
+		if (e.keyCode == 13) {
+			makeCode();
+		}
 	});
-	var editor = document.getElementById('text');
-	editor.focus();
-	var size = Math.min(window.innerWidth/4, window.innerHeight/4);
-	editor.onkeyup = window.onresize = function() {
-		qr.makeCode(editor.value);
-	};
-	qr.makeCode(editor.value);
-};</script><!--!= partial('../_shared/analytics')--></body></html>
+</script>
+</body>
